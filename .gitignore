@@ -2,3 +2,7 @@ packages/
 PublishScripts/
 *.sln
 *.suo
+*.csproj
+*.csproj.user
+/bin/
+/obj/
