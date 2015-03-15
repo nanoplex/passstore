@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#4CAF50">
+
+    <title>passstore</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Roboto;
+            color: #616161;
+        }
+
+        * {
+            transition: .3s;
+        }
+
+        input {
+            color: #616161;
+        }
+
+        paper-spinner {
+            width: 23px;
+            height: 23px;
+        }
+
+            paper-spinner /deep/ .circle {
+                border-color: #4CAF50;
+            }
+
+        #content {
+            display: flex;
+            flex-direction: column;
+        }
+
+            #content > paper-spinner {
+                margin-top: 7em;
+                align-self: center;
+            }
+
+        #status {
+            display: inline;
+            position: fixed;
+            bottom: 2em;
+            left: 2em;
+            padding: 1em 1.5em;
+            background: rgba(0,0,0,.5);
+            color: white;
+        }
+
+            #status.hide {
+                bottom: -4em;
+            }
+    </style>
+    <script src="/bower_components/webcomponentsjs/webcomponents.js" async></script>
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700' rel='stylesheet' type='text/css'>
+
+    <link rel="import" href="/bower_components/paper-spinner/paper-spinner.html" />
+    <link rel="import" href="/bower_components/core-icon/core-icon.html" />
+    <link rel="import" href="/bower_components/core-icons/core-icons.html" />
+    <link rel="import" href="/bower_components/core-icons/communication-icons.html" />
+    <link rel="import" href="/elements/elements.html" />
+</head>
+<body unresolved>
+    <div id="content">
+        <paper-spinner active></paper-spinner>
+    </div>
+
+    <div id="status" class="hide"></div>
+    <div id="statusQueue" class="hide"></div>
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="/jquery.zclip.min.js" async></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js').then(function (registration) {
+                // Registration was successful
+                console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            }).catch(function (err) {
+                // registration failed :(
+                console.log('ServiceWorker registration failed: ', err);
+            });
+        }
+
+        var content = document.getElementById("content");
+
+        function CheckAuth() {
+            var xhr = new XMLHttpRequest();
+
+            xhr.onload = function () {
+                username = JSON.parse(this.response);
+                if (username) ChangeView("home", username);
+                else ChangeView("login");
+            };
+            xhr.open("GET", "/home/auth", true);
+            xhr.send();
+        }
+
+        function ChangeView(state, user) {
+            var view = document.createElement("view-" + state);
+
+            if (user !== undefined) {
+                view.setAttribute("username", user);
+            }
+
+            content.innerHTML = "";
+            content.appendChild(view);
+        }
+
+        CheckAuth();
+    </script>
+</body>
+</html>

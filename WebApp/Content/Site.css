@@ -1,0 +1,254 @@
+﻿body {
+    margin: 2em 0 0;
+    padding: 0;
+    font-family: Roboto;
+    color: #616161;
+}
+
+* {
+    transition: .3s;
+}
+
+input {
+    color: #616161;
+}
+
+paper-spinner {
+    width: 23px;
+    height: 23px;
+}
+
+    paper-spinner /deep/ .circle {
+        border-color: #616161;
+    }
+
+button {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #616161;
+    margin: 0;
+    padding: 0;
+}
+
+#content {
+    display: flex;
+    flex-direction: column;
+}
+
+    #content > paper-spinner {
+        margin-top: 7em;
+        align-self: center;
+    }
+
+#btnLogin, #addButton {
+    background: #616161;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 1.5em;
+    position: fixed;
+    bottom: 2em;
+    right: 2em;
+    outline: none;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
+}
+
+    #btnLogin:hover, #addButton:hover {
+        box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3), 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    #btnLogin paper-spinner /deep/ .circle, #addButton paper-spinner /deep/ .circle {
+        border-color: white;
+    }
+
+    #btnLogin.OK {
+        background: #4CAF50;
+    }
+
+    #btnLogin.BAD {
+        background: #F44336;
+    }
+
+#login {
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+}
+
+    #login.hide {
+        opacity: 0;
+    }
+
+    #login section {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 1.5em 0;
+    }
+
+        #login section label {
+            border-bottom: 1px solid;
+            padding: .5em;
+        }
+
+        #login section input {
+            border: none;
+            border-bottom: 1px solid;
+            padding: .7em;
+            width: 100%;
+            font-size: 1em;
+            outline: none;
+        }
+
+#status {
+    display: inline;
+    position: fixed;
+    bottom: 2em;
+    left: 2em;
+    padding: 1em 1.5em;
+    background: rgba(0,0,0,.5);
+    color: white;
+}
+
+    #status.hide {
+        bottom: -4em;
+    }
+
+.pass {
+    width: 100%;
+}
+
+    .pass section:first-child {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid;
+        padding: 0 2em;
+    }
+
+    .pass:nth-child(even) section:first-child {
+        background: rgba(0, 0, 0, .1);
+    }
+
+    .pass:nth-child(4) section:first-child {
+        border-top: 1px solid;
+    }
+
+    .pass section:last-child {
+        border-bottom: 1px solid;
+        padding: 0 2em;
+    }
+
+        .pass section:last-child div {
+            display: flex;
+            align-items: center;
+            margin: 1em 0;
+        }
+
+            .pass section:last-child div core-icon {
+                margin-right: 1em;
+            }
+
+            .pass section:last-child div button core-icon {
+                margin: 0;
+            }
+
+            .pass section:last-child div p {
+                flex: 1;
+                margin: 0;
+            }
+
+.password {
+    display: flex;
+    justify-content: flex-end;
+}
+
+    .password a {
+        color: #616161;
+    }
+
+        .password a core-icon {
+            margin: 0 !important;
+        }
+
+.hidden, .hide {
+    display: none;
+}
+
+#addDialog, #generatorDialog {
+    position: fixed;
+    justify-content: center;
+    display: flex;
+    top: 5em;
+    width: 100%;
+}
+
+    #addDialog.hide, #generatorDialog.hide {
+        top: -25em;
+    }
+
+    #addDialog div, #generatorDialog > section {
+        background: white;
+        box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
+        padding: 1.5em;
+        display: flex;
+        flex-direction: column;
+        align-items: baseline;
+        width: 24em;
+    }
+
+    #addDialog h2 {
+        margin-top: 0;
+    }
+
+    #addDialog input {
+        width: 100%;
+        border: none;
+        padding: 0.3em 0;
+        border-bottom: 1px solid;
+        font-size: 1em;
+        margin: 0.2em 0;
+    }
+
+    #addDialog section {
+        display: flex;
+        width: 100%;
+    }
+
+        #addDialog section button {
+            margin: .3em;
+        }
+
+    #addDialog button {
+        align-self: flex-end;
+    }
+
+    #generatorDialog > section {
+        width: 20em !important;
+    }
+
+        #generatorDialog h2 {
+            margin-top: 0;
+        }
+
+        #generatorDialog section section {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin: 1em 0;
+        }
+
+    #generatorDialog input[type=checkbox] {
+        margin: 0;
+    }
+
+    #generatorDialog input[type=range] {
+        margin: 1em;
+        width: 93%;
+    }
+
+    #generatorDialog button {
+        align-self: flex-end;
+    }

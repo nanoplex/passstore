@@ -1,0 +1,26 @@
+﻿<link rel="import" href="/bower_components/polymer/polymer.html" />
+<link rel="import" href="/bower_components/core-ajax/core-xhr.html" />
+
+<polymer-element name="dialog-add" attributes="password">
+    <template>
+        <link href="dialog-add.min.css" rel="stylesheet" />
+        <core-xhr id="xhr"></core-xhr>
+        <div>
+            <h2> add new password</h2>
+            <label for='name'> Name: </label>
+            <input type='text' name='name' value="{{name}}" required />
+            <br />
+            <label for='name'> Username: </label>
+            <input type='text' name='username' value="{{username}}" required />
+            <br />
+            <label for='name'> Password: </label>
+            <section>
+                <input type='password' name='password' value="{{password}}" required />
+                <button on-tap="{{Generate}}"> <core-icon icon="communication:vpn-key"> </core-icon> </button>
+            </section>
+            <br />
+            <button on-tap="{{Add}}"> <core-icon icon='check'> </core-icon> </button>
+        </div>
+    </template>
+    <script src="dialog-add.min.js"></script>
+</polymer-element>

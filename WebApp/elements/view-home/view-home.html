@@ -1,0 +1,51 @@
+﻿<link rel="import" href="/bower_components/polymer/polymer.html" />
+<link rel="import" href="/bower_components/core-ajax/core-ajax.html" />
+<link rel="import" href="/bower_components/core-ajax/core-xhr.html" />
+<link rel="import" href="/bower_components/paper-menu-button/paper-menu-button.html" />
+<link rel="import" href="/bower_components/paper-icon-button/paper-icon-button.html" />
+<link rel="import" href="/bower_components/paper-dropdown/paper-dropdown.html" />
+<link rel="import" href="/bower_components/core-menu/core-menu.html" />
+<link rel="import" href="/bower_components/paper-item/paper-item.html" />
+
+<polymer-element name="view-home" attributes="username">
+    <template>
+        <link href="view-home.min.css" rel="stylesheet" />
+        <core-ajax auto
+                   url="/home/getpasswords"
+                   params=''
+                   handleas="json"
+                   method="post"
+                   on-core-response="{{handlePasswords}}">
+        </core-ajax>
+        <core-xhr id="logout"></core-xhr>
+        
+        <header layout horizontal center>
+            <h2 flex>nanoplex passstore</h2>
+            <core-icon icon="perm-identity"></core-icon>
+            <p>{{username}}</p>
+            <paper-menu-button>
+                <paper-icon-button icon="menu" noink></paper-icon-button>
+                <paper-dropdown class="dropdown" halign="right">
+                    <core-menu class="menu">
+                        <paper-item>Settings</paper-item>
+                        <paper-item on-tap="{{logout}}">Logout</paper-item>
+                    </core-menu>
+                </paper-dropdown>
+            </paper-menu-button>
+        </header>
+
+        <dialog-add id="add" class="hide"></dialog-add>
+        <dialog-generate id="generate" class="hide"></dialog-generate>
+
+        <section>
+            <template repeat="{{password in passwords}}">
+                <el-password data="{{password}}"></el-password>
+            </template>
+        </section>
+
+        <paper-icon-button icon="add" on-tap="{{addClick}}" id="addButton" raised>
+        </paper-icon-button>
+
+    </template>
+    <script src="view-home.min.js"></script>
+</polymer-element>

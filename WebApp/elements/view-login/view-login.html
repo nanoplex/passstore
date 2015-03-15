@@ -1,0 +1,28 @@
+﻿<link rel="import" href="/bower_components/polymer/polymer.html" />
+<link rel="import" href="/bower_components/core-ajax/core-ajax.html" />
+
+<polymer-element name="view-login">
+    <template>
+        <link href="view-login.min.css" rel="stylesheet" />
+        <core-ajax auto
+                   url="/home/login"
+                   params='{"username":"{{username}}","password":"{{password}}"}'
+                   handleas="json"
+                   method="post"
+                   on-core-response="{{login}}"></core-ajax>
+        <h1>nanoplex passstore</h1>
+        <div id="login">
+            <section>
+                <label for="username"><core-icon icon="perm-identity"></core-icon></label>
+                <input type="text" name="username" value="{{username}}" required />
+            </section>
+            <section>
+                <label for="password"><core-icon icon="lock-outline"></core-icon></label>
+                <input type="password" name="password" value="{{password}}" required />
+            </section>
+            <button id="btnLogin"><core-icon icon="lock-open"></core-icon></button>
+        </div>
+        {{test}}
+    </template>
+    <script src="view-login.min.js"></script>
+</polymer-element>

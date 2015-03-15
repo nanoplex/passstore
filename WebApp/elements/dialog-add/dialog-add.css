@@ -1,0 +1,57 @@
+﻿:host {
+    position: fixed;
+    justify-content: center;
+    display: flex;
+    top: 5em;
+    width: 100%;
+    transition: .3s;
+}
+
+:host(.hide) {
+    top: -25em;
+}
+
+button {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #616161;
+    margin: 0;
+    padding: 0;
+}
+
+div {
+    background: white;
+    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
+    padding: 1.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    width: 24em;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+input {
+    width: 100%;
+    border: none;
+    padding: 0.3em 0;
+    border-bottom: 1px solid;
+    font-size: 1em;
+    margin: 0.2em 0;
+}
+
+section {
+    display: flex;
+    width: 100%;
+}
+
+    section button {
+        margin: .3em;
+    }
+
+button {
+    align-self: flex-end;
+}

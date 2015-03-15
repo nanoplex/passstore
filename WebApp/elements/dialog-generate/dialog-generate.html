@@ -1,0 +1,33 @@
+﻿<link rel="import" href="/bower_components/polymer/polymer.html" />
+<link rel="import" href="/bower_components/core-ajax/core-xhr.html" />
+
+<polymer-element name="dialog-generate">
+    <template>
+        <link href="dialog-generate.min.css" rel="stylesheet" />
+        <core-xhr id="xhr"></core-xhr>
+        <section>
+            <h2>Generate password</h2>
+            <section>
+                <article>
+                    <input type="checkbox" name="letters" checked="{{letters}}" />
+                    <label>a-z</label>
+                    <br>
+                    <br>
+                    <input type="checkbox" name="cased" checked="{{lettersCased}}" />
+                    <label>A-Z</label>
+                </article>
+                <article>
+                    <label>0-9</label>
+                    <input type="checkbox" name="numbers" checked="{{numbers}}" />
+                    <br>
+                    <br>
+                    <label>$!#</label>
+                    <input type="checkbox" name="symbols" checked="{{symbol}}" />
+                </article>
+            </section>
+            <input type="range" name="length" min="5" max="50" value="{{length}}" />
+            <button on-tap="{{Generate}}"><core-icon icon="check"></core-icon></button>
+        </section>
+    </template>
+    <script src="dialog-generate.min.js"></script>
+</polymer-element>
