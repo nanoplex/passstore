@@ -4,5 +4,7 @@ PublishScripts/
 *.suo
 *.csproj
 *.csproj.user
-/bin/
-/obj/
+**/bin/
+**/obj/
+**/Properties
+*.pfx
